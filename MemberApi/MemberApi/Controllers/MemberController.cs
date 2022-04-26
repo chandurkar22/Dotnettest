@@ -1,27 +1,58 @@
-﻿using Member.Data.Interface;
-using Member.Data.Model;
-using Member.Data.Repository;
-using Microsoft.AspNetCore.Http;
+﻿
+
+using MemberApi;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 
-namespace MemberApi.Controllers
+
+namespace MyWebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class MemberController : ControllerBase
+    public class MemberController : Controller
     {
-        private IMember members = new MembersRepository();
+        // GET: api/values
+        [HttpPost ]
+      [Route ("AddMember")]
+        public Members AddMember()
+        {
+            var context = new MemberDb();
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Members>> GetAllMembers()
-        {
-            return members.GetAllMember();
+                var std = new Members()
+                {
+                    Name = "Bill",
+                    Age =   1
+                };
+
+            context.Members.Add(std);
+            context.SaveChanges();
+
+            return std;
+        
         }
-        [HttpGet]
-        [Route("{id}")]
-        public ActionResult<Members> GetMemberById(int id)
+        
+
+        // GET: api/values/5
+       /* public string Get(int id)
         {
-            return members.GetMember(id);
+            return "value";
         }
+
+        // POST: api/values
+        /*public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT: api/values/5
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE: api/values/5
+        public void Delete(int id)
+        {
+        }*/
     }
 }
