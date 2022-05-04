@@ -13,46 +13,93 @@ namespace MyWebAPI.Controllers
 {
     public class MemberController : Controller
     {
-        // GET: api/values
-        [HttpPost ]
-      [Route ("AddMember")]
-        public Members AddMember()
+        // POST: api/values
+        [HttpPost]
+        [Route("member")]
+        public Members AddMember([FromBody] Members member)
         {
             var context = new MemberDb();
 
-                var std = new Members()
-                {
-                    Name = "Bill",
-                    Age =   1
-                };
+            var std = new Members()
+            {
+                Name = member.Name,
+                Age = member.Age,
+            };
 
             context.Members.Add(std);
             context.SaveChanges();
 
             return std;
-        
-        }
-        
 
-        // GET: api/values/5
-       /* public string Get(int id)
-        {
-            return "value";
         }
-
-        // POST: api/values
-        /*public void Post([FromBody] string value)
-        {
-        }
-
         // PUT: api/values/5
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route("member/{id}")]
+        public IActionResult Put([FromRoute] int id, [FromBody] Members member)
         {
+            var context = new MemberDb();
+            var std = context.Members.Where(x => x.Id == id).FirstOrDefault();
+            if(std == null)
+            {
+                return BadRequest("Id is not Valid .");
+            }
+            else
+            {
+                std.Name = member.Name;
+                std.Age = member.Age;
+            }
+            
+            context.SaveChanges();
+
+            return Ok(std);
+
+        }
+        // DELETE: api/values/5
+        [HttpDelete]
+        [Route("member/{id}")]
+        public IActionResult Delete([FromRoute] int id)
+        {
+            if (id <= 0)
+                return BadRequest("Not a valid student id");
+
+            using (var context = new MemberDb())
+            {
+                var std = context.Members.Where(x => x.Id == id).FirstOrDefault();  
+                context.Members.Remove(std);
+                context.SaveChanges();
+            }
+            return Ok();
         }
 
-        // DELETE: api/values/5
-        public void Delete(int id)
+        // GET: api/values
+        [HttpGet]
+        [Route("member")]
+        public IActionResult Get()
         {
-        }*/
+            IList<Members> members = null;
+            
+            using (var context = new MemberDb())
+            {
+                members = context.Members
+                    .Select(s => new Members()
+                    {
+                        Id = s.Id,
+                        Name = s.Name,
+                        Age = s.Age,
+
+                    }).ToList<Members>();
+            }
+            if (members == null)
+            {
+                return NotFound();
+            }
+
+            return Ok (members);
+        }
+
+
     }
 }
+
+
+
