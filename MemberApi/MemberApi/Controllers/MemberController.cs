@@ -11,6 +11,7 @@ using System.Net.Http;
 
 namespace MyWebAPI.Controllers
 {
+    [Route("abc")]
     public class MemberController : Controller
     {
         // POST: api/values
@@ -76,18 +77,12 @@ namespace MyWebAPI.Controllers
         [Route("member")]
         public IActionResult Get()
         {
+            
             IList<Members> members = null;
             
             using (var context = new MemberDb())
             {
-                members = context.Members
-                    .Select(s => new Members()
-                    {
-                        Id = s.Id,
-                        Name = s.Name,
-                        Age = s.Age,
-
-                    }).ToList<Members>();
+                members = context.Members.ToList<Members>();
             }
             if (members == null)
             {
