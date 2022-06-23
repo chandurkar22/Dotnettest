@@ -6,7 +6,6 @@ Console.WriteLine("Hello, World!");
 
 
 
-
 /*var BDList = new C2BContext();
 var bca = new BankDetails()
 {

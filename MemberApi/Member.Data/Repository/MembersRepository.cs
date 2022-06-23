@@ -10,7 +10,7 @@ namespace Member.Data.Repository
 {
     public class MembersRepository : IMember
     {
-        List<Members> lisMembers = new List<Members>
+        List<Members> listMembers = new List<Members>
         {
             new Members{MemberId=1, FirstName="Kirtesh", LastName="Shah", Address="Vadodara" },
             new Members{MemberId=2, FirstName="Nitya", LastName="Shah", Address="Vadodara" },
@@ -22,13 +22,13 @@ namespace Member.Data.Repository
 
         public List<Members> GetAllMember()
         {
-            return lisMembers;
+            return listMembers;
 
         }
 
         public Members GetMember(int id)
         {
-            return lisMembers.FirstOrDefault(x => x.MemberId == id);
+            return listMembers.FirstOrDefault(x => x.MemberId == id);
 
         }
     }

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchingAlgorithms", "SearchingAlgorithms\SearchingAlgorithms.csproj", "{2ADD083F-FAA7-4481-9D50-7DCEB3F635A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchingAlgorithms", "SearchingAlgorithms\SearchingAlgorithms.csproj", "{2ADD083F-FAA7-4481-9D50-7DCEB3F635A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{3898806A-5AFB-4B37-958B-461B7B377457}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2ADD083F-FAA7-4481-9D50-7DCEB3F635A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ADD083F-FAA7-4481-9D50-7DCEB3F635A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ADD083F-FAA7-4481-9D50-7DCEB3F635A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3898806A-5AFB-4B37-958B-461B7B377457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3898806A-5AFB-4B37-958B-461B7B377457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3898806A-5AFB-4B37-958B-461B7B377457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3898806A-5AFB-4B37-958B-461B7B377457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
